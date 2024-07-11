@@ -10,6 +10,7 @@ import ClassOutlinedIcon from '@mui/icons-material/ClassOutlined';
 import { useSelector } from 'react-redux';
 
 import EventIcon from '@mui/icons-material/Event';
+import QuizIcon from '@mui/icons-material/Quiz';
 
 const TeacherSideBar = () => {
     const { currentUser } = useSelector((state) => state.user);
@@ -30,6 +31,14 @@ const TeacherSideBar = () => {
                         <ClassOutlinedIcon color={location.pathname.startsWith("/Teacher/class") ? 'primary' : 'inherit'} />
                     </ListItemIcon>
                     <ListItemText primary={`Class ${sclassName.sclassName}`} />
+                </ListItemButton>
+
+                {/* AI Test Quiz */}
+                <ListItemButton component={Link} to="/Teacher/test">
+                <ListItemIcon>
+                    <QuizIcon color={location.pathname.startsWith("/Teacher/test") ? 'primary' : 'inherit'} />
+                </ListItemIcon>
+                <ListItemText primary="AI Test Quiz?" />
                 </ListItemButton>
 
                 {/* calendar */}

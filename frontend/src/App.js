@@ -27,7 +27,8 @@ const App = () => {
           <Route path="/Adminregister" element={<AdminRegisterPage />} />
 
           <Route path='*' element={<Navigate to="/" />} />
-        </Routes>}
+        </Routes>
+      }
 
       {currentRole === "Admin" &&
         <>

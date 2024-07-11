@@ -8,7 +8,9 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import AnnouncementOutlinedIcon from '@mui/icons-material/AnnouncementOutlined';
 import ClassOutlinedIcon from '@mui/icons-material/ClassOutlined';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+
 import EventIcon from '@mui/icons-material/Event';
+import QuizIcon from '@mui/icons-material/Quiz';
 
 const StudentSideBar = () => {
     const location = useLocation();
@@ -26,6 +28,14 @@ const StudentSideBar = () => {
                         <AssignmentIcon color={location.pathname.startsWith("/Student/subjects") ? 'primary' : 'inherit'} />
                     </ListItemIcon>
                     <ListItemText primary="Subjects" />
+                </ListItemButton>
+
+                {/* AI Test Quiz? */}
+                <ListItemButton component={Link} to="/Student/test">
+                <ListItemIcon>
+                    <QuizIcon color={location.pathname.startsWith("/Student/test") ? 'primary' : 'inherit'} />
+                </ListItemIcon>
+                <ListItemText primary="AI Test Quiz?" />
                 </ListItemButton>
                 
                 {/* calendar */}
