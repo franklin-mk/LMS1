@@ -9,13 +9,13 @@ open the folder
             MONGO_URL='with your mongodb url here'
             PORT=5000
 
-    # command to run in the terminal
+    # commands to run in the terminal
     cd backend
     npm install
     npm start
 
 2. frontend
-    # command to run in another terminal
+    # commands to run in another terminal
     cd frontend
     npm install
     npm start
