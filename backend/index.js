@@ -18,8 +18,8 @@ app.use(cors())
 
 mongoose
     .connect(process.env.MONGO_URL)
-    .then(console.log("Connected to MongoDB ATLAS"))
-    .catch((err) => console.log("NOT CONNECTED TO NETWORK", err))
+    .then(console.log("Connected to MongoDB ATLAS "))
+    .catch((err) => console.log("COULD NOT CONNECT TO DATABASE!", err))
 
 app.use('/', Routes);
 
