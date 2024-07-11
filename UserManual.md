@@ -2,8 +2,8 @@
 clone and downloadzip file then extract files
 open the folder
 
-1. backend  
-    # ADD 
+1. backend
+    # CREATE
     .env file in the backend directory
     Include these lines in the .env file:
             MONGO_URL='with your mongodb url here'

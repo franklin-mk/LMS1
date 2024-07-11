@@ -49,12 +49,13 @@ const TeacherSideBar = () => {
                     <ListItemText primary="Calendar" />
                 </ListItemButton> 
 
-                <ListItemButton component={Link} to="/Teacher/complain">
+                {/* <ListItemButton component={Link} to="/Teacher/complain">
                     <ListItemIcon>
                         <AnnouncementOutlinedIcon color={location.pathname.startsWith("/Teacher/complain") ? 'primary' : 'inherit'} />
                     </ListItemIcon>
                     <ListItemText primary="Complain" />
-                </ListItemButton>
+                </ListItemButton> */}
+
             </React.Fragment>
             <Divider sx={{ my: 1 }} />
             <React.Fragment>
