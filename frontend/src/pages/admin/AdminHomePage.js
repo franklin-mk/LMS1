@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import { getAllSclasses } from '../../redux/sclassRelated/sclassHandle';
 import { getAllStudents } from '../../redux/studentRelated/studentHandle';
 import { getAllTeachers } from '../../redux/teacherRelated/teacherHandle';
+import { Link } from 'react-router-dom';
 
 const AdminHomePage = () => {
     const dispatch = useDispatch();
@@ -36,7 +37,9 @@ const AdminHomePage = () => {
         <>
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
                 <Grid container spacing={3}>
-                    <Grid item xs={12} md={3} lg={3}>
+
+                    <Grid item xs={12} md={3} lg={4}>
+                        <Link to="/Admin/students">
                         <StyledPaper>
                             <img src={Students} alt="Students" />
                             <Title>
@@ -44,8 +47,11 @@ const AdminHomePage = () => {
                             </Title>
                             <Data start={0} end={numberOfStudents} duration={2.5} />
                         </StyledPaper>
+                        </Link>
                     </Grid>
-                    <Grid item xs={12} md={3} lg={3}>
+
+                    <Grid item xs={12} md={3} lg={4}>
+                        <Link to="/Admin/classes">
                         <StyledPaper>
                             <img src={Classes} alt="Classes" />
                             <Title>
@@ -53,8 +59,11 @@ const AdminHomePage = () => {
                             </Title>
                             <Data start={0} end={numberOfClasses} duration={5} />
                         </StyledPaper>
+                        </Link>
                     </Grid>
-                    <Grid item xs={12} md={3} lg={3}>
+
+                    <Grid item xs={12} md={3} lg={4}>
+                        <Link to="/Admin/teachers">
                         <StyledPaper>
                             <img src={Teachers} alt="Teachers" />
                             <Title>
@@ -62,8 +71,10 @@ const AdminHomePage = () => {
                             </Title>
                             <Data start={0} end={numberOfTeachers} duration={2.5} />
                         </StyledPaper>
+                        </Link>
                     </Grid>
-                    <Grid item xs={12} md={3} lg={3}>
+
+                    {/* <Grid item xs={12} md={3} lg={3}>
                         <StyledPaper>
                             <img src={Fees} alt="Fees" />
                             <Title>
@@ -71,7 +82,8 @@ const AdminHomePage = () => {
                             </Title>
                             <Data start={0} end={101070} duration={3} prefix="Ksh." />                        
                         </StyledPaper>
-                    </Grid>
+                    </Grid> */}
+                    
                     <Grid item xs={12} md={12} lg={12}>
                         <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                             <SeeNotice />

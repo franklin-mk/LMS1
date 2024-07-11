@@ -10,6 +10,7 @@ import CountUp from 'react-countup';
 import Subject from "../../assets/subjects.svg";
 import Assignment from "../../assets/assignment.svg";
 import { getSubjectList } from '../../redux/sclassRelated/sclassHandle';
+import { Link } from 'react-router-dom';
 
 const StudentHomePage = () => {
     const dispatch = useDispatch();
@@ -45,7 +46,8 @@ const StudentHomePage = () => {
         <>
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
                 <Grid container spacing={3}>
-                    <Grid item xs={12} md={3} lg={3}>
+                    <Grid item xs={12} md={3} lg={4}>
+                        <Link to="/Student/subjects">
                         <StyledPaper>
                             <img src={Subject} alt="Subjects" />
                             <Title>
@@ -53,17 +55,25 @@ const StudentHomePage = () => {
                             </Title>
                             <Data start={0} end={numberOfSubjects} duration={2.5} />
                         </StyledPaper>
+                        </Link>
                     </Grid>
-                    <Grid item xs={12} md={3} lg={3}>
+
+                    
+                    <Grid item xs={12} md={3} lg={4}>
+                        <Link to="/Student/test">
                         <StyledPaper>
                             <img src={Assignment} alt="Assignments" />
                             <Title>
-                                Total Assignments
+                                Get Quiz?
                             </Title>
-                            <Data start={0} end={15} duration={4} />
+                            <Data start={0} end={5} duration={2.5} />
                         </StyledPaper>
+                        </Link>
                     </Grid>
-                    <Grid item xs={12} md={4} lg={3}>
+                    
+
+                    <Grid item xs={12} md={4} lg={4}>
+                        <Link to="/Student/attendance">
                         <ChartContainer>
                             {
                                 response ?
@@ -90,7 +100,9 @@ const StudentHomePage = () => {
                                     </>
                             }
                         </ChartContainer>
+                        </Link>
                     </Grid>
+
                     <Grid item xs={12}>
                         <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                             <SeeNotice />
