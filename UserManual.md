@@ -6,7 +6,7 @@ open the folder
     # ADD 
     .env file in the backend directory
     Include these lines in the .env file:
-            MONGO_URL='with your mongo url here'
+            MONGO_URL='with your mongodb url here'
             PORT=5000
 
     # command to run in the terminal
