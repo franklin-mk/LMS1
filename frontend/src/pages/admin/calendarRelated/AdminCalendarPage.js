@@ -34,7 +34,7 @@ const AdminCalendarPage = () => {
     const savedEvents = localStorage.getItem('events');
     return savedEvents ? JSON.parse(savedEvents) : [
       {
-        title: 'Mid-term Exam',
+        title: 'Event',
         start: new Date(),
         end: new Date(),
       },
