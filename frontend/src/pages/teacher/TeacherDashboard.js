@@ -26,6 +26,7 @@ import StudentExamMarks from '../admin/studentRelated/StudentExamMarks';
 
 import AdminCalendarPage from '../admin/calendarRelated/AdminCalendarPage';
 import AIchat from '../../components/Test';
+import Discussion from './TeacherDiscussion';
 
 const TeacherDashboard = () => {
     const [open, setOpen] = useState(true);
@@ -81,6 +82,9 @@ const TeacherDashboard = () => {
                         <Route path='*' element={<Navigate to="/" />} />
                         <Route path="/Teacher/dashboard" element={<TeacherHomePage />} />
                         <Route path="/Teacher/profile" element={<TeacherProfile />} />
+
+                        {/* Discussion */}
+                        <Route path="/Teacher/discuss" element={<Discussion />} />
 
                         {/* AI TEST */}
                         <Route path="/Teacher/test" element={<AIchat />} />

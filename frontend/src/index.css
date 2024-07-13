@@ -145,3 +145,73 @@ a {
   color: #666;
 }
 
+/* Discussion.css */
+.discussion-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical; /* Allow vertical resizing of the textarea */
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-primary:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.some-margin{
+  margin-left: 10px;
+  padding: 5px;
+}
+
+.mapped-questions{
+  border-bottom: rgb(13, 50, 109) solid 2px;
+  border-top: rgb(47, 196, 242) solid 2px;
+  padding: 10px;
+}
+
+.toggleAnswers {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.toggleAnswers p {
+  margin: 0;
+  margin-left: 8px; /* Adjust the space between the icon and the text as needed */
+  font-size: 16px; /* Adjust the font size as needed */
+  color: #000000;
+  font-weight: 700;
+}
+
+.toggleAnswers .MuiSvgIcon-root {
+  font-size: 24px; /* Adjust the size of the icon as needed */
+  color: #000; /* Adjust the color of the icon as needed */
+}

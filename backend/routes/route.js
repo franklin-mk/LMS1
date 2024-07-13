@@ -25,6 +25,10 @@ const {
 const { subjectCreate, classSubjects, deleteSubjectsByClass, getSubjectDetail, deleteSubject, freeSubjectList, allSubjects, deleteSubjects } = require('../controllers/subject-controller.js');
 const { teacherRegister, teacherLogIn, getTeachers, getTeacherDetail, deleteTeachers, deleteTeachersByClass, deleteTeacher, updateTeacherSubject, teacherAttendance } = require('../controllers/teacher-controller.js');
 
+
+//get questions and answers
+const { postQuestion, getQuestion, getAllQuestions, postAnswer, getAnswers } = require('../controllers/questionAnswer-controller.js')
+
 // Admin
 router.post('/AdminReg', adminRegister);
 router.post('/AdminLogin', adminLogIn);
@@ -115,5 +119,13 @@ router.get("/Subject/:id", getSubjectDetail)
 router.delete("/Subject/:id", deleteSubject)
 router.delete("/Subjects/:id", deleteSubjects)
 router.delete("/SubjectsClass/:id", deleteSubjectsByClass)
+
+
+//questions and answers
+router.post('/QuestionCreate', postQuestion ); //post a question
+router.get('/QuestionList/:id', getQuestion); //get a specific question
+router.get('/Questions', getAllQuestions); // get all questions
+router.post('/AnswerCreate', postAnswer); //post an answer for a specific question
+router.get('/AnswerList/:questionId/answers', getAnswers); //answers for a specific question
 
 module.exports = router;

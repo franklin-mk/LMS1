@@ -23,6 +23,7 @@ import { AppBar, Drawer } from '../../components/styles';
 
 import AdminCalendarPage from '../admin/calendarRelated/AdminCalendarPage';
 import AIchat from '../../components/Test';
+import Discussion from './StudentDiscussion';
 
 const StudentDashboard = () => {
     const [open, setOpen] = useState(true);
@@ -78,6 +79,9 @@ const StudentDashboard = () => {
                         <Route path='*' element={<Navigate to="/" />} />
                         <Route path="/Student/dashboard" element={<StudentHomePage />} />
                         <Route path="/Student/profile" element={<StudentProfile />} />
+
+                        {/* Discussion */}
+                        <Route path="/Student/discuss" element={<Discussion />} />
 
                         {/* AI TEST */}
                         <Route path="/Student/test" element={<AIchat />} />
