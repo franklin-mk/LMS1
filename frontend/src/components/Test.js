@@ -89,8 +89,8 @@ const AIchat = () => {
                     <Tab label="AI Test Quiz?" value="1" />
                     <Tab label="AI Planner" value="2" />
                     <Tab label="AI Summerizer" value="3" />
-                    <Tab label="Student Apply AI" value="4" />
-                    <Tab label="Teacher Apply AI" value="5" />
+                    <Tab label="Student AI Scheduler" value="4" />
+                    <Tab label="Teacher AI Approval" value="5" />
                   </TabList>
                 </Box>
                 <Container sx={{ marginTop: "3rem", marginBottom: "4rem" }}>
