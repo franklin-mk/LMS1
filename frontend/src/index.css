@@ -185,9 +185,18 @@ a {
   background-color: #6c757d;
   cursor: not-allowed;
 }
+.card-text{
+  font-size: 16px;
+  font-style: italic;
+}
+.text-muted{
+  color: #6c757d;
+  margin-top: 5px;
+}
 
 .some-margin{
   margin-left: 10px;
+  margin-right: 10px;
   padding: 5px;
 }
 
@@ -196,8 +205,12 @@ a {
   border-top: rgb(47, 196, 242) solid 2px;
   padding: 10px;
 }
+.center-text{
+  text-align: center;
+}
 
 .toggleAnswers {
+  margin-top: 10px;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -214,4 +227,16 @@ a {
 .toggleAnswers .MuiSvgIcon-root {
   font-size: 24px; /* Adjust the size of the icon as needed */
   color: #000; /* Adjust the color of the icon as needed */
+}
+
+.answersPanel{
+  margin-bottom: 1rem;
+}
+.answerCard{
+  color: rgba(13, 10, 10, 0.81);
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.answerCard p{
+  color: rgba(14, 18, 37, 0.768);
 }

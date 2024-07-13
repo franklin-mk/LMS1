@@ -83,7 +83,7 @@ const Discussion = ({ role, name }) => {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>
-            Question:
+            Write Your Question Below:
             <textarea
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
@@ -94,12 +94,12 @@ const Discussion = ({ role, name }) => {
           </label>
         </div>
         <button type="submit" className="btn btn-primary">
-          Submit Question
+          Post Question
         </button>
       </form>
 
       <div className="mt-4">
-        <h3>Recent Questions:</h3>
+        <h3 className='center-text'>Recent Questions:</h3>
         {questions.map((q) => (
           <div className='mapped-questions' key={q._id}>
             <div className="questionCard">

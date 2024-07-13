@@ -10,7 +10,7 @@ const StudentDiscussion = () => {
 
   return (
     <div>
-        <div >
+        {/* <div >
             <div>
                 <p>Roll Number: {currentUser.rollNum}</p>
                 <p>Role: {role}</p>
@@ -18,7 +18,7 @@ const StudentDiscussion = () => {
                 <p>Class: {currentUser.sclassName?.sclassName}</p>
                 <p>School: {currentUser.school?.schoolName}</p>
             </div>
-        </div>
+        </div> */}
         <Discussion role={role}  name={name}/>
     </div>
   )

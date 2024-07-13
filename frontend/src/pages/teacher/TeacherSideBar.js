@@ -10,8 +10,9 @@ import ClassOutlinedIcon from '@mui/icons-material/ClassOutlined';
 import { useSelector } from 'react-redux';
 
 import EventIcon from '@mui/icons-material/Event';
-import QuizIcon from '@mui/icons-material/Quiz';
+//import QuizIcon from '@mui/icons-material/Quiz';
 import ChatIcon from '@mui/icons-material/Chat';
+import SmartToyIcon from '@mui/icons-material/SmartToy'
 
 const TeacherSideBar = () => {
     const { currentUser } = useSelector((state) => state.user);
@@ -39,15 +40,15 @@ const TeacherSideBar = () => {
                 <ListItemIcon>
                     <ChatIcon color={location.pathname.startsWith("/Teacher/discuss") ? 'primary' : 'inherit'} />
                 </ListItemIcon>
-                <ListItemText primary="Discussion Channel" />
+                <ListItemText primary="Sch. Discussions" />
                 </ListItemButton>
 
                 {/* AI Test Quiz */}
                 <ListItemButton component={Link} to="/Teacher/test">
                 <ListItemIcon>
-                    <QuizIcon color={location.pathname.startsWith("/Teacher/test") ? 'primary' : 'inherit'} />
+                    <SmartToyIcon color={location.pathname.startsWith("/Teacher/test") ? 'primary' : 'inherit'} />
                 </ListItemIcon>
-                <ListItemText primary="AI Test Quiz?" />
+                <ListItemText primary="AI Assistance" />
                 </ListItemButton>
 
                 {/* calendar */}

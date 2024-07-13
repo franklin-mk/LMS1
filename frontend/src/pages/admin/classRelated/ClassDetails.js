@@ -19,6 +19,8 @@ import Popup from "../../../components/Popup";
 import DeleteIcon from "@mui/icons-material/Delete";
 import PostAddIcon from '@mui/icons-material/PostAdd';
 
+import ShowTeachers from "../teacherRelated/ShowTeachers";
+
 const ClassDetails = () => {
     const params = useParams()
     const navigate = useNavigate()
@@ -47,16 +49,16 @@ const ClassDetails = () => {
     const [message, setMessage] = useState("");
 
     const deleteHandler = (deleteID, address) => {
-        console.log(deleteID);
-        console.log(address);
-        setMessage("Sorry the delete function has been disabled for now.")
+        //console.log(deleteID);
+        //console.log(address);
+        setMessage("Dleted successfully.")
         setShowPopup(true)
-        // dispatch(deleteUser(deleteID, address))
-        //     .then(() => {
-        //         dispatch(getClassStudents(classID));
-        //         dispatch(resetSubjects())
-        //         dispatch(getSubjectList(classID, "ClassSubjects"))
-        //     })
+         dispatch(deleteUser(deleteID, address))
+             .then(() => {
+                 dispatch(getClassStudents(classID));
+                 dispatch(resetSubjects())
+                 dispatch(getSubjectList(classID, "ClassSubjects"))
+             })
     }
 
     const subjectColumns = [
@@ -206,7 +208,8 @@ const ClassDetails = () => {
     const ClassTeachersSection = () => {
         return (
             <>
-                Teachers
+                Teachers:
+                <ShowTeachers />
             </>
         )
     }
@@ -262,7 +265,7 @@ const ClassDetails = () => {
                                     <Tab label="Details" value="1" />
                                     <Tab label="Subjects" value="2" />
                                     <Tab label="Students" value="3" />
-                                    <Tab label="Teachers" value="4" />
+                                   <Tab label="Teachers" value="4" /> 
                                 </TabList>
                             </Box>
                             <Container sx={{ marginTop: "3rem", marginBottom: "4rem" }}>
@@ -275,9 +278,9 @@ const ClassDetails = () => {
                                 <TabPanel value="3">
                                     <ClassStudentsSection />
                                 </TabPanel>
-                                <TabPanel value="4">
+                               <TabPanel value="4">
                                     <ClassTeachersSection />
-                                </TabPanel>
+                                </TabPanel> 
                             </Container>
                         </TabContext>
                     </Box>

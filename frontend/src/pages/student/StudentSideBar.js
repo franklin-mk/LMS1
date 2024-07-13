@@ -10,8 +10,9 @@ import ClassOutlinedIcon from '@mui/icons-material/ClassOutlined';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 
 import EventIcon from '@mui/icons-material/Event';
-import QuizIcon from '@mui/icons-material/Quiz';
+//import QuizIcon from '@mui/icons-material/Quiz';
 import ChatIcon from '@mui/icons-material/Chat';
+import SmartToyIcon from '@mui/icons-material/SmartToy'
 
 const StudentSideBar = () => {
     const location = useLocation();
@@ -36,15 +37,15 @@ const StudentSideBar = () => {
                 <ListItemIcon>
                     <ChatIcon color={location.pathname.startsWith("/Student/discuss") ? 'primary' : 'inherit'} />
                 </ListItemIcon>
-                <ListItemText primary="Discussion Channel" />
+                <ListItemText primary="Sch. Discussions" />
                 </ListItemButton>
 
                 {/* AI Test Quiz? */}
                 <ListItemButton component={Link} to="/Student/test">
                 <ListItemIcon>
-                    <QuizIcon color={location.pathname.startsWith("/Student/test") ? 'primary' : 'inherit'} />
+                    <SmartToyIcon color={location.pathname.startsWith("/Student/test") ? 'primary' : 'inherit'} />
                 </ListItemIcon>
-                <ListItemText primary="AI Test Quiz?" />
+                <ListItemText primary="AI Assistance" />
                 </ListItemButton>
                 
                 {/* calendar */}

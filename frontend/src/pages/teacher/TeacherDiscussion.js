@@ -10,7 +10,7 @@ const TeacherDiscussion = () => {
 
   return (
     <div>
-        <div >
+        {/* <div >
             <div>
                 <p>Name: {name}</p>
                 <p>Role: {role}</p>
@@ -19,7 +19,7 @@ const TeacherDiscussion = () => {
                 <p>Subject: {currentUser.teachSubject?.subName}</p>
                 <p>School: {currentUser.school?.schoolName}</p>
             </div>
-        </div>
+        </div> */}
         <Discussion role={role} name={name}/>
     </div>
   )
