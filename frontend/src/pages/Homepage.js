@@ -24,7 +24,9 @@ const Homepage = () => {
                             System
                         </StyledTitle>
                         <StyledText>
-                            Streamline school management, class organization, and add students and faculty.
+                            Streamline learning management, class organization, and add students and faculty.
+                            Schedule your personal time and get assistance from AI generated content.
+                            Also interact with others in pursue for knowledge.
                             Seamlessly track attendance, assess performance, and provide feedback.
                             Access records, view marks, and communicate effortlessly.
                         </StyledText>
