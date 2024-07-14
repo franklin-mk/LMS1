@@ -3,9 +3,8 @@ export const calculateSubjectAttendancePercentage = (presentCount, totalSessions
         return 0;
     }
     const percentage = (presentCount / totalSessions) * 100;
-    return percentage.toFixed(2); // Limit to two decimal places
+    return parseFloat(percentage.toFixed(2)); // Return as a number
 };
-
 
 export const groupAttendanceBySubject = (subjectAttendance) => {
     const attendanceBySubject = {};
@@ -56,5 +55,6 @@ export const calculateOverallAttendancePercentage = (subjectAttendance) => {
         return 0;
     }
 
-    return (presentCountSum / totalSessionsSum) * 100;
+    const percentage = (presentCountSum / totalSessionsSum) * 100;
+    return parseFloat(percentage.toFixed(2)); // Return as a number
 };
