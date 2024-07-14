@@ -55,7 +55,7 @@ const AIchat = () => {
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
         <iframe
-          src="https://teachers-and-students-data.zapier.app/submit-form"
+          src="https://webhookers-zapier.onrender.com"
           title="Student Apply AI"
           style={{ width: '100%', height: '100%', border: 'none' }}
         />
@@ -89,8 +89,8 @@ const AIchat = () => {
                     <Tab label="AI Test Quiz?" value="1" />
                     <Tab label="AI Planner" value="2" />
                     <Tab label="AI Summerizer" value="3" />
-                    <Tab label="Student AI Scheduler" value="4" />
-                    <Tab label="Teacher AI Approval" value="5" />
+                    <Tab label="AI Student Inquiry" value="4" />
+                    {/* <Tab label="Teacher AI Approval" value="5" /> */}
                   </TabList>
                 </Box>
                 <Container sx={{ marginTop: "3rem", marginBottom: "4rem" }}>
@@ -106,9 +106,9 @@ const AIchat = () => {
                   <TabPanel value="4">
                     <AiStudents />
                   </TabPanel>
-                  <TabPanel value="5">
+                  {/* <TabPanel value="5">
                     <AiTeachers />
-                  </TabPanel>
+                  </TabPanel> */}
                 </Container>
               </TabContext>
             </Box>
