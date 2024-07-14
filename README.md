@@ -1,4 +1,4 @@
-# MERN Stack School Management System
+# MERN Stack Learning Management System
 
 This is a School Management System built using the MERN (MongoDB, Express.js, React, Node.js) stack. The frontend is developed with React and Vite, with styling done using CSS.
 
@@ -19,47 +19,67 @@ This is a School Management System built using the MERN (MongoDB, Express.js, Re
 
 ## Technologies Used
 
-- *Frontend:* React, Vite
+- *Frontend:* React, JavaScript
 - *Backend:* Node.js, Express.js
 - *Database:* MongoDB
 - *Authentication:* JSON Web Tokens (JWT)
 - *Deployment:* Render
 
-## Setup Instructions
+## Deloyed Version:
+
+    https://lms1-frontend.onrender.com
+
+## Application Walkthrough via presantation:
+
+    https://drive.google.com/file/d/1Paa8boOG6XV2zP0_QUEWZ2LKGDwVMj8l/view?usp=drive_link    
+
+
+
+
+
+## Local Setup Instructions
 
 1. *Clone the repository:*
 
 git clone https://github.com/franklin-mk/LMS1.git
 
-
 2. *Install dependencies:*
-cd frontend/backend(do for both)
+- *Backend:*
+cd backend
+npm install
+
+- *Frontend:*
+cd frontend
 npm install
 
 
 3. *Set up environment variables:*
 
-- Create a .env file in the root directory.
+- Create a .env file in the backend directory.
 - Define the following environment variables:
             MONGO_URL='with your mongodb url here'
             PORT=5000
+
+- Create a .env file in the frontend directory.     
+- Define the following environment variables:
+          REACT_APP_API_URL='http://localhost:5000/api/v1'
   
 
-4. *Run the development servers:*
-
-- Start the frontend server:
-
- cd frontend 
-  npm run dev
-  
+4. *Run the development servers:*  
 
 - Start the backend server:
 
   cd backend
   npm start
+
+- Start the frontend server:
+
+  cd frontend 
+  npm run dev
   
 
 5. *Access the application locally:*
 
 Open your browser and navigate to http://localhost:5173
 
+Thank you
