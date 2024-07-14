@@ -27,11 +27,12 @@ This is a School Management System built using the MERN (MongoDB, Express.js, Re
 
 ## Deloyed Version:
 
-    https://lms1-frontend.onrender.com
+https://lms1-frontend.onrender.com
+
 
 ## Application Walkthrough via presantation:
 
-    https://drive.google.com/file/d/1Paa8boOG6XV2zP0_QUEWZ2LKGDwVMj8l/view?usp=drive_link    
+https://drive.google.com/file/d/1Paa8boOG6XV2zP0_QUEWZ2LKGDwVMj8l/view?usp=drive_link    
 
 
 
@@ -39,8 +40,9 @@ This is a School Management System built using the MERN (MongoDB, Express.js, Re
 
 ## Local Setup Instructions
 
-1. *Clone the repository:*
+1. *Get the repository:*
 
+download as zip and then extract the files     OR
 git clone https://github.com/franklin-mk/LMS1.git
 
 2. *Install dependencies:*
