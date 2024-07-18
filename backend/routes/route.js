@@ -1,3 +1,4 @@
+//creating a new router object
 const router = require('express').Router();
 
 // const { adminRegister, adminLogIn, deleteAdmin, getAdminDetail, updateAdmin } = require('../controllers/admin-controller.js');
@@ -26,26 +27,25 @@ const { subjectCreate, classSubjects, deleteSubjectsByClass, getSubjectDetail, d
 const { teacherRegister, teacherLogIn, getTeachers, getTeacherDetail, deleteTeachers, deleteTeachersByClass, deleteTeacher, updateTeacherSubject, teacherAttendance } = require('../controllers/teacher-controller.js');
 
 // Admin
+// POST requests to /admin/AdminReg will be handled by adminRegister
+
 router.post('/AdminReg', adminRegister);
+//POST requests to /admin/AdminLogin will be handled by adminLogIn
 router.post('/AdminLogin', adminLogIn);
-
+//handles get requests which can use the id parameter from the URL to fetch and respond with appropriate details
 router.get("/Admin/:id", getAdminDetail)
-// router.delete("/Admin/:id", deleteAdmin)
 
-// router.put("/Admin/:id", updateAdmin)
-
-// Student
 
 router.post('/StudentReg', studentRegister);
 router.post('/StudentLogin', studentLogIn)
 
 router.get("/Students/:id", getStudents)
 router.get("/Student/:id", getStudentDetail)
-
+//when a delete request is made to the URL eg /students/123 the function after will handle the request
 router.delete("/Students/:id", deleteStudents)
 router.delete("/StudentsClass/:id", deleteStudentsByClass)
 router.delete("/Student/:id", deleteStudent)
-
+//request to update the existing data made to the URL will be handled by the function 
 router.put("/Student/:id", updateStudent)
 
 router.put('/UpdateExamResult/:id', updateExamResult)

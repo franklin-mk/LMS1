@@ -3,6 +3,7 @@ const Student = require('../models/studentSchema.js');
 const Subject = require('../models/subjectSchema.js');
 const Teacher = require('../models/teacherSchema.js');
 
+// Function to create a new school class
 const sclassCreate = async (req, res) => {
     try {
         const sclass = new Sclass({
@@ -10,15 +11,15 @@ const sclassCreate = async (req, res) => {
             school: req.body.adminID
         });
 
+        // Check if the class name already exists for the school
         const existingSclassByName = await Sclass.findOne({
             sclassName: req.body.sclassName,
             school: req.body.adminID
         });
 
         if (existingSclassByName) {
-            res.send({ message: 'Sorry this class name already exists' });
-        }
-        else {
+            res.send({ message: 'Sorry, this class name already exists' });
+        } else {
             const result = await sclass.save();
             res.send(result);
         }
@@ -27,37 +28,42 @@ const sclassCreate = async (req, res) => {
     }
 };
 
+// Function to get a list of school classes for a specific school
 const sclassList = async (req, res) => {
     try {
-        let sclasses = await Sclass.find({ school: req.params.id })
+        let sclasses = await Sclass.find({ school: req.params.id });
+
         if (sclasses.length > 0) {
-            res.send(sclasses)
+            res.send(sclasses);
         } else {
-            res.send({ message: "No sclasses found" });
+            res.send({ message: "No classes found" });
         }
     } catch (err) {
         res.status(500).json(err);
     }
 };
 
+// Function to get details of a specific school class
 const getSclassDetail = async (req, res) => {
     try {
         let sclass = await Sclass.findById(req.params.id);
+
         if (sclass) {
-            sclass = await sclass.populate("school", "schoolName")
+            sclass = await sclass.populate("school", "schoolName");
             res.send(sclass);
-        }
-        else {
-            res.send({ message: "No class found" });
+        } else {
+            res.send({ message: "Class not found" });
         }
     } catch (err) {
         res.status(500).json(err);
     }
-}
+};
 
+// Function to get students belonging to a specific school class
 const getSclassStudents = async (req, res) => {
     try {
-        let students = await Student.find({ sclassName: req.params.id })
+        let students = await Student.find({ sclassName: req.params.id });
+
         if (students.length > 0) {
             let modifiedStudents = students.map((student) => {
                 return { ...student._doc, password: undefined };
@@ -69,37 +75,51 @@ const getSclassStudents = async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
-}
+};
 
+// Function to delete a specific school class and associated records (students, subjects, teachers)
 const deleteSclass = async (req, res) => {
     try {
         const deletedClass = await Sclass.findByIdAndDelete(req.params.id);
+
         if (!deletedClass) {
             return res.send({ message: "Class not found" });
         }
+
         const deletedStudents = await Student.deleteMany({ sclassName: req.params.id });
         const deletedSubjects = await Subject.deleteMany({ sclassName: req.params.id });
         const deletedTeachers = await Teacher.deleteMany({ teachSclass: req.params.id });
+
         res.send(deletedClass);
     } catch (error) {
         res.status(500).json(error);
     }
-}
+};
 
+// Function to delete all school classes of a specific school and associated records (students, subjects, teachers)
 const deleteSclasses = async (req, res) => {
     try {
         const deletedClasses = await Sclass.deleteMany({ school: req.params.id });
+
         if (deletedClasses.deletedCount === 0) {
             return res.send({ message: "No classes found to delete" });
         }
+
         const deletedStudents = await Student.deleteMany({ school: req.params.id });
         const deletedSubjects = await Subject.deleteMany({ school: req.params.id });
         const deletedTeachers = await Teacher.deleteMany({ school: req.params.id });
+
         res.send(deletedClasses);
     } catch (error) {
         res.status(500).json(error);
     }
-}
+};
 
-
-module.exports = { sclassCreate, sclassList, deleteSclass, deleteSclasses, getSclassDetail, getSclassStudents };
+module.exports = {
+    sclassCreate,
+    sclassList,
+    deleteSclass,
+    deleteSclasses,
+    getSclassDetail,
+    getSclassStudents
+};
