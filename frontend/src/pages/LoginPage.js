@@ -10,61 +10,72 @@ import styled from 'styled-components';
 import { loginUser } from '../redux/userRelated/userHandle';
 import Popup from '../components/Popup';
 
+// Create a default theme for MUI components
 const defaultTheme = createTheme();
 
 const LoginPage = ({ role }) => {
+    // Redux dispatch and navigate hook from react-router-dom
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+    // Selecting the required states from the Redux store
+    const { status, currentUser, response, error, currentRole } = useSelector(state => state.user);
 
-    const { status, currentUser, response, error, currentRole } = useSelector(state => state.user);;
+    // Component state variables
+    const [toggle, setToggle] = useState(false); // For toggling password visibility
+    const [guestLoader, setGuestLoader] = useState(false); // Loader for guest login
+    const [loader, setLoader] = useState(false); // Loader for form submission
+    const [showPopup, setShowPopup] = useState(false); // For displaying popup messages
+    const [message, setMessage] = useState(""); // Message to be shown in the popup
 
-    const [toggle, setToggle] = useState(false)
-    const [guestLoader, setGuestLoader] = useState(false)
-    const [loader, setLoader] = useState(false)
-    const [showPopup, setShowPopup] = useState(false);
-    const [message, setMessage] = useState("");
-
+    // Error states for form validation
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
     const [rollNumberError, setRollNumberError] = useState(false);
     const [studentNameError, setStudentNameError] = useState(false);
 
+    // Form submit handler
     const handleSubmit = (event) => {
-        event.preventDefault();
+        event.preventDefault(); // Prevent default form submission
 
         if (role === "Student") {
+            // Get the input values for student login
             const rollNum = event.target.rollNumber.value;
             const studentName = event.target.studentName.value;
             const password = event.target.password.value;
 
+            // Validate inputs
             if (!rollNum || !studentName || !password) {
                 if (!rollNum) setRollNumberError(true);
                 if (!studentName) setStudentNameError(true);
                 if (!password) setPasswordError(true);
                 return;
             }
-            const fields = { rollNum, studentName, password }
-            setLoader(true)
-            dispatch(loginUser(fields, role))
-        }
 
-        else {
+            // Prepare the fields object for student login
+            const fields = { rollNum, studentName, password };
+            setLoader(true); // Show loader
+            dispatch(loginUser(fields, role)); // Dispatch login action
+        } else {
+            // Get the input values for admin/teacher login
             const email = event.target.email.value;
             const password = event.target.password.value;
 
+            // Validate inputs
             if (!email || !password) {
                 if (!email) setEmailError(true);
                 if (!password) setPasswordError(true);
                 return;
             }
 
-            const fields = { email, password }
-            setLoader(true)
-            dispatch(loginUser(fields, role))
+            // Prepare the fields object for admin/teacher login
+            const fields = { email, password };
+            setLoader(true); // Show loader
+            dispatch(loginUser(fields, role)); // Dispatch login action
         }
     };
 
+    // Handler to clear the error state on input change
     const handleInputChange = (event) => {
         const { name } = event.target;
         if (name === 'email') setEmailError(false);
@@ -73,53 +84,55 @@ const LoginPage = ({ role }) => {
         if (name === 'studentName') setStudentNameError(false);
     };
 
+    // Handler for guest login
     const guestModeHandler = () => {
-        const password = "zxc"
+        const password = "zxc"; // Guest password
 
+        // Define guest login details based on role
         if (role === "Admin") {
-            const email = "yogendra@12"
-            const fields = { email, password }
-            setGuestLoader(true)
-            dispatch(loginUser(fields, role))
+            const email = "yogendra@12";
+            const fields = { email, password };
+            setGuestLoader(true); // Show guest loader
+            dispatch(loginUser(fields, role)); // Dispatch guest login action
+        } else if (role === "Student") {
+            const rollNum = "1";
+            const studentName = "Dipesh Awasthi";
+            const fields = { rollNum, studentName, password };
+            setGuestLoader(true); // Show guest loader
+            dispatch(loginUser(fields, role)); // Dispatch guest login action
+        } else if (role === "Teacher") {
+            const email = "tony@12";
+            const fields = { email, password };
+            setGuestLoader(true); // Show guest loader
+            dispatch(loginUser(fields, role)); // Dispatch guest login action
         }
-        else if (role === "Student") {
-            const rollNum = "1"
-            const studentName = "Dipesh Awasthi"
-            const fields = { rollNum, studentName, password }
-            setGuestLoader(true)
-            dispatch(loginUser(fields, role))
-        }
-        else if (role === "Teacher") {
-            const email = "tony@12"
-            const fields = { email, password }
-            setGuestLoader(true)
-            dispatch(loginUser(fields, role))
-        }
-    }
+    };
 
+    // Effect to handle navigation and error handling after login
     useEffect(() => {
         if (status === 'success' || currentUser !== null) {
+            // Navigate to respective dashboard based on role
             if (currentRole === 'Admin') {
                 navigate('/Admin/dashboard');
-            }
-            else if (currentRole === 'Student') {
+            } else if (currentRole === 'Student') {
                 navigate('/Student/dashboard');
             } else if (currentRole === 'Teacher') {
                 navigate('/Teacher/dashboard');
             }
-        }
-        else if (status === 'failed') {
-            setMessage(response)
-            setShowPopup(true)
-            setLoader(false)
-        }
-        else if (status === 'error') {
-            setMessage("Network Error")
-            setShowPopup(true)
-            setLoader(false)
-            setGuestLoader(false)
+        } else if (status === 'failed') {
+            // Show error message in popup
+            setMessage(response);
+            setShowPopup(true);
+            setLoader(false);
+        } else if (status === 'error') {
+            // Show network error message in popup
+            setMessage("Network Error");
+            setShowPopup(true);
+            setLoader(false);
+            setGuestLoader(false);
         }
     }, [status, currentRole, navigate, error, response, currentUser]);
+
 
     return (
         <ThemeProvider theme={defaultTheme}>

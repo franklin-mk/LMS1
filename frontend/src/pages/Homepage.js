@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Grid, Box, Button } from '@mui/material';
 import styled from 'styled-components';
-import Students from "../assets/students.svg";
+
 import Library from "../assets/graduation.png"
 import { LightPurpleButton } from '../components/buttonStyles';
 

@@ -10,13 +10,16 @@ const SpeedDialTemplate = ({ actions }) => {
             direction="left"
         >
             {actions.map((action) => (
-                <SpeedDialAction
-                    key={action.name}
-                    icon={action.icon}
-                    tooltipTitle={action.name}
-                    onClick={action.action}
-                />
-            ))}
+    // Iterate over each action in the actions array and return a SpeedDialAction component for each
+    <SpeedDialAction
+        key={action.name} // Use the action name as the unique key for each component
+        icon={action.icon} // Set the icon of the SpeedDialAction to the action's icon
+        tooltipTitle={action.name} // Set the tooltip title to the action's name
+        onClick={action.action} // Set the onClick event to the action's handler function
+    />
+))}
+
+            
         </CustomSpeedDial>
     )
 }

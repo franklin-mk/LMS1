@@ -20,11 +20,11 @@ const ChooseUser = ({ visitor }) => {
   const password = "zxc"
 
   const { status, currentUser, currentRole } = useSelector(state => state.user);;
-
+ // Local state for managing loader and popup visibility and message
   const [loader, setLoader] = useState(false)
   const [showPopup, setShowPopup] = useState(false);
   const [message, setMessage] = useState("");
-
+ // Function to handle navigation based on user type and visitor status
   const navigateHandler = (user) => {
     if (user === "Admin") {
       if (visitor === "guest") {

@@ -27,20 +27,26 @@ const TableViewTemplate = ({ columns, rows }) => {
                             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                             .map((row) => {
                                 return (
-                                    <StyledTableRow hover role="checkbox" tabIndex={-1} key={row.id}>
-                                        {columns.map((column, index) => {
-                                            const value = row[column.id];
-                                            return (
-                                                <StyledTableCell key={index} align={column.align}>
-                                                    {
-                                                        column.format && typeof value === 'number'
-                                                            ? column.format(value)
-                                                            : value
-                                                    }
-                                                </StyledTableCell>
-                                            );
-                                        })}
-                                    </StyledTableRow>
+                                    // Render a styled table row with hover effect and checkbox role
+<StyledTableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+    {/* Map over the columns array to render each cell in the row */}
+    {columns.map((column, index) => {
+        // Retrieve the value from the row object based on the column id
+        const value = row[column.id];
+        return (
+            // Render a styled table cell with key and alignment properties
+            <StyledTableCell key={index} align={column.align}>
+                {
+                    // If the column has a format function and the value is a number, format the value
+                    column.format && typeof value === 'number'
+                        ? column.format(value)
+                        : value // Otherwise, display the value as is
+                }
+            </StyledTableCell>
+        );
+    })}
+</StyledTableRow>
+
                                 );
                             })}
                     </TableBody>
@@ -54,8 +60,10 @@ const TableViewTemplate = ({ columns, rows }) => {
                 page={page}
                 onPageChange={(event, newPage) => setPage(newPage)}
                 onRowsPerPageChange={(event) => {
-                    setRowsPerPage(parseInt(event.target.value, 5));
-                    setPage(0);
+                    // Function to set the number of rows per page and reset the current page to the first page
+setRowsPerPage(parseInt(event.target.value, 10));
+setPage(0);
+
                 }}
             />
         </>

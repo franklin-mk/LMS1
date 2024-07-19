@@ -13,35 +13,51 @@ import { StyledTableCell, StyledTableRow } from '../../components/styles';
 
 const StudentSubjects = () => {
 
+    // useDispatch is used to dispatch actions to the Redux store
     const dispatch = useDispatch();
+    
+    // useSelector is used to select parts of the state from the Redux store
     const { subjectsList, sclassDetails } = useSelector((state) => state.sclass);
     const { userDetails, currentUser, loading, response, error } = useSelector((state) => state.user);
 
+    // useEffect to fetch user details when the component mounts or currentUser._id changes
     useEffect(() => {
+        // Dispatch action to get user details for the current user
         dispatch(getUserDetails(currentUser._id, "Student"));
-    }, [dispatch, currentUser._id])
+    }, [dispatch, currentUser._id]);
 
-    if (response) { console.log(response) }
-    else if (error) { console.log(error) }
+    // Log response or error if they exist
+    if (response) { 
+        console.log(response); 
+    } else if (error) { 
+        console.log(error); 
+    }
 
+    // Local state to store exam results and the currently selected section of the UI
     const [subjectMarks, setSubjectMarks] = useState([]);
     const [selectedSection, setSelectedSection] = useState('table');
 
+    // useEffect to set the subject marks when userDetails changes
     useEffect(() => {
         if (userDetails) {
+            // Set the subject marks from userDetails or default to an empty array if not available
             setSubjectMarks(userDetails.examResult || []);
         }
-    }, [userDetails])
+    }, [userDetails]);
 
+    // useEffect to fetch the list of subjects if subjectMarks is empty
     useEffect(() => {
         if (subjectMarks.length === 0) {
+            // Dispatch action to get the list of subjects for the class
             dispatch(getSubjectList(currentUser.sclassName._id, "ClassSubjects"));
         }
     }, [subjectMarks, dispatch, currentUser.sclassName._id]);
 
+    // Function to handle changes in the selected section of the UI
     const handleSectionChange = (event, newSection) => {
         setSelectedSection(newSection);
     };
+
 
     const renderTableSection = () => {
         return (

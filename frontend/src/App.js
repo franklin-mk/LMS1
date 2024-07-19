@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import Homepage from './pages/Homepage';
@@ -10,10 +10,12 @@ import AdminRegisterPage from './pages/admin/AdminRegisterPage';
 import ChooseUser from './pages/ChooseUser';
 
 const App = () => {
+  // Getting the current role of the user from the Redux store
   const { currentRole } = useSelector(state => state.user);
 
   return (
     <Router>
+      {/* Routes for users who do not have a role assigned yet */}
       {currentRole === null &&
         <Routes>
           <Route path="/" element={<Homepage />} />
@@ -26,29 +28,33 @@ const App = () => {
 
           <Route path="/Adminregister" element={<AdminRegisterPage />} />
 
+          {/* Redirecting any unknown paths to the homepage */}
           <Route path='*' element={<Navigate to="/" />} />
         </Routes>
       }
 
+      {/* Displaying the admin dashboard if the current role is "Admin" */}
       {currentRole === "Admin" &&
         <>
           <AdminDashboard />
         </>
       }
 
+      {/* Displaying the student dashboard if the current role is "Student" */}
       {currentRole === "Student" &&
         <>
           <StudentDashboard />
         </>
       }
 
+      {/* Displaying the teacher dashboard if the current role is "Teacher" */}
       {currentRole === "Teacher" &&
         <>
           <TeacherDashboard />
         </>
       }
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

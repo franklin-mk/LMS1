@@ -14,10 +14,13 @@ import TableChartOutlinedIcon from '@mui/icons-material/TableChartOutlined';
 import { StyledTableCell, StyledTableRow } from '../../components/styles';
 
 const ViewStdAttendance = () => {
+    // useDispatch is used to dispatch actions to the Redux store
     const dispatch = useDispatch();
 
+    // Local state to keep track of which subjects' details are open
     const [openStates, setOpenStates] = useState({});
 
+    // Function to toggle the open state of a subject's details
     const handleOpen = (subId) => {
         setOpenStates((prevState) => ({
             ...prevState,
@@ -25,28 +28,41 @@ const ViewStdAttendance = () => {
         }));
     };
 
+    // useSelector is used to select parts of the state from the Redux store
     const { userDetails, currentUser, loading, response, error } = useSelector((state) => state.user);
 
+    // useEffect to fetch user details when the component mounts or currentUser._id changes
     useEffect(() => {
+        // Dispatch action to get user details for the current user
         dispatch(getUserDetails(currentUser._id, "Student"));
     }, [dispatch, currentUser._id]);
 
-    if (response) { console.log(response) }
-    else if (error) { console.log(error) }
+    // Log response or error if they exist
+    if (response) { 
+        console.log(response); 
+    } else if (error) { 
+        console.log(error); 
+    }
 
+    // Local state to store attendance information for subjects
     const [subjectAttendance, setSubjectAttendance] = useState([]);
     const [selectedSection, setSelectedSection] = useState('table');
 
+    // useEffect to set the subject attendance when userDetails changes
     useEffect(() => {
         if (userDetails) {
+            // Set the subject attendance from userDetails or default to an empty array if not available
             setSubjectAttendance(userDetails.attendance || []);
         }
-    }, [userDetails])
+    }, [userDetails]);
 
-    const attendanceBySubject = groupAttendanceBySubject(subjectAttendance)
+    // Function to group attendance records by subject
+    const attendanceBySubject = groupAttendanceBySubject(subjectAttendance);
 
+    // Function to calculate the overall attendance percentage
     const overallAttendancePercentage = calculateOverallAttendancePercentage(subjectAttendance);
 
+    // Map the grouped attendance data into a format suitable for display
     const subjectData = Object.entries(attendanceBySubject).map(([subName, { subCode, present, sessions }]) => {
         const subjectAttendancePercentage = calculateSubjectAttendancePercentage(present, sessions);
         return {
@@ -57,6 +73,7 @@ const ViewStdAttendance = () => {
         };
     });
 
+    // Function to handle changes in the selected section of the UI
     const handleSectionChange = (event, newSection) => {
         setSelectedSection(newSection);
     };

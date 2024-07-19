@@ -5,15 +5,23 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const AccountMenu = () => {
+    // State to manage the anchor element for the account menu
     const [anchorEl, setAnchorEl] = useState(null);
 
+    // Boolean to check if the menu is open
     const open = Boolean(anchorEl);
 
+    // Extracting currentRole and currentUser from the Redux store
     const { currentRole, currentUser } = useSelector(state => state.user);
 
+    // Function to handle the click event on the account button
+    // Sets the anchor element to the button that was clicked
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+
+    // Function to handle closing of the account menu
+    // Sets the anchor element to null
     const handleClose = () => {
         setAnchorEl(null);
     };
