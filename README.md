@@ -1,5 +1,4 @@
 # MERN Stack Learning Management System
-# update readme
 
 This is a School Management System built using the MERN (MongoDB, Express.js, React, Node.js) stack. The frontend is developed with React and Vite, with styling done using CSS.
 
@@ -24,11 +23,12 @@ This is a School Management System built using the MERN (MongoDB, Express.js, Re
 - *Backend:* Node.js, Express.js
 - *Database:* MongoDB
 - *Authentication:* JSON Web Tokens (JWT)
-- *Deployment:* Render
+- *Backend Deployment:* Render
+- *Frontend Deployment:* Vercel
 
 ## Deloyed Version:
 
-https://lms1-frontend.onrender.com
+https://lms1-black.vercel.app
 
 
 ## Application Walkthrough via presantation:
@@ -78,11 +78,11 @@ npm install
 - Start the frontend server:
 
   cd frontend 
-  npm run dev
+  npm start
   
 
 5. *Access the application locally:*
 
-Open your browser and navigate to http://localhost:5173
+Open your browser and navigate to http://localhost:5000
 
 Thank you
