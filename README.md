@@ -1,4 +1,5 @@
 # MERN Stack Learning Management System
+# update readme
 
 This is a School Management System built using the MERN (MongoDB, Express.js, React, Node.js) stack. The frontend is developed with React and Vite, with styling done using CSS.
 
