@@ -28,7 +28,7 @@ This is a School Management System built using the MERN (MongoDB, Express.js, Re
 
 ## Deloyed Version:
 
-https://lms1-black.vercel.app
+https://lms1-black.vercel.app/
 
 
 ## Application Walkthrough via presantation:
